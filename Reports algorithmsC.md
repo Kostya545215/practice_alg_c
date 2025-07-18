@@ -1,6 +1,6 @@
 [simulink](simulink)
 
-[cubemx](CubeMX.md)
+[cubemx](all/CubeMX.md)
 
 Настройка Simulink для работы через него с Stm32
 
