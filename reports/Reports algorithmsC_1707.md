@@ -1,4 +1,4 @@
-[simulink](all/simulink.md)
+[simulink](../all/simulink.md)
 
 [cubemx](../all/CubeMX.md)
 
