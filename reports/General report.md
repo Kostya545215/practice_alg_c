@@ -9,7 +9,7 @@
 
 ### Настройка-Simulink-для-STM32
 
-Для работы с stm32 через simulink необходимо устанавливать вспомогательную библиотеку stmicroelectronicsstm32f4discovery. Без лицензионного matlab невозможно устанавливать библиотеки через интерфейс matlab, поэтому придется скачивать их со [стороннего сайта]((https://www.mathworks.com/matlabcentral/fileexchange/)
+Для работы с stm32 через simulink необходимо устанавливать вспомогательную библиотеку stmicroelectronicsstm32f4discovery. Без лицензионного matlab невозможно устанавливать библиотеки через интерфейс matlab, поэтому придется скачивать их со [стороннего сайта](https://www.mathworks.com/matlabcentral/fileexchange/)
 Если же при такой установке возникает ошибка Something Unexpected Occurred, можно попробовать следовать руководству из следующей [статьи](https://www.mathworks.com/matlabcentral/answers/489806-why-do-i-see-the-error-something-unexpected-occurred-when-installing-mathworks-products?s_tid=pi_suoe_uai_R2024a_win64#add_on_toolboxes)
 
 После установки необходимого пакеты, нужно правильно настроить среду для работы.
