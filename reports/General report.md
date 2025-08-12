@@ -56,6 +56,7 @@ void generation_sin(int a, int b, int* c, int* d)
 Параметры из data sheet:
 
 Gate-Emitter threshold Voltage - Threshold voltage - (5+6.8)/2 = 5.9 V
+
 Diode Forward Voltage - Forward Voltage diod - 1.7 V
 Collector-Emitter Cut off Current - Off-state conductance - 1e-6 S
 Module lead resistance - Drain-source on resistance - 0.8 mOhm
