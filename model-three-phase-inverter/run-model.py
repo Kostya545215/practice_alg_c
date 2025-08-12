@@ -7,7 +7,7 @@ eng.three_phase_inverter(
     "config2",
     r"C:\Users\Konstantin\Desktop\test.csv",
     "Time_simulation",
-    100, 
+    0.1, 
     nargout=0
 )
 
