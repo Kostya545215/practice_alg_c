@@ -14,13 +14,13 @@
 
 После установки необходимого пакеты, нужно правильно настроить среду для работы.
 
- - Выбор платы (HARDWARE -> HARDWARE Setings -> Hardware implementation -> Hardware Board)
+- Выбор платы (HARDWARE -> HARDWARE Setings -> Hardware implementation -> Hardware Board)
 
 - Выбор необходимого ioc файла (HARDWARE -> HARDWARE Setings -> Hardware implementation -> Hardware Board -> Hardware board setings -> target hardware resources -> build options -> STM32CubeMX project file(Browse) )
 
 - Необходимо выбрать канал и порт UART для обмена данными между stm32 и компьютером ( HARDWARE -> HARDWARE Setings -> Hardware implementation -> Hardware Board -> Hardware board setings -> target hardware resources -> connectivity)
 
-  - Необходимо поставить галочки у visibility(static) в СubeMX project Manager -> Advanced Settings -> Generated Funcion Calls. (если галочки не кликабельны, то необходимо пересоздать проект, и при его создании отжать все галочки). 
+- Необходимо поставить галочки у visibility(static) в СubeMX project Manager -> Advanced Settings -> Generated Funcion Calls. (если галочки не кликабельны, то необходимо пересоздать проект, и при его создании отжать все галочки). 
 
 ### C/C++
 
