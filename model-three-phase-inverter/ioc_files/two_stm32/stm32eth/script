@@ -1,0 +1,10 @@
+config load "C:\Users\Konstantin\Documents\cubeMX\two_stm32\stm32eth\stm32eth.ioc"
+project toolchain STM32CubeIDE
+
+SetStructure Advanced
+
+project setCustomFWPath "C:\Users\Konstantin\STM32Cube\Repository\STM32Cube_FW_H7_V1.9.1"
+
+project generate 
+
+exit wait
