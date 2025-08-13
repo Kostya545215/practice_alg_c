@@ -1,6 +1,37 @@
 import matlab.engine
 import pandas as pd
 import matplotlib.pyplot as plt
+import configparser
+import sys
+
+HELP_TEXT = """
+[general]
+description = Программа для запуска моделирования трехфазного инвертора и выведения графиков тока и напряжения на нагрузке. 
+important_note = Важно иметь ввиду, что модель работает в 1000 раз медленнее, поэтому при задании, например, 0.1 секунды симуляции, она будет выполняться 100 секунд.
+
+[parameters]
+config = Название конфигурации (например 'config1')
+csv_file = Путь к CSV файлу (ввод/вывод)
+Time_simulation = Время симуляции (по умолчанию 0.01)
+R_load = Сопротивление нагрузки в омах (по умолчанию 50)
+C_load = Ёмкость нагрузки в фарадах (по умолчанию 0.01)
+L_load = Индуктивность нагрузки в генри (по умолчанию 0.0001)
+voltage = Напряжение источника в вольтах (по умолчанию 50)
+
+"""
+
+def show_help():
+    """Показывает справку"""
+    config = configparser.ConfigParser()
+    config.read_string(HELP_TEXT)
+    
+    print("\n" + config['general']['description'])
+    print("\nВажно!: " + config['general']['important_note'])
+    print("\nПараметры:")
+    for param, desc in config['parameters'].items():
+        print(f"  {param}: {desc}")
+    print()
+
 
 def start_simulation(config, csv_file, **kwargs):
     eng = matlab.engine.start_matlab()   
@@ -38,5 +69,8 @@ def draw_plot(csv_file):
 
 if __name__ == "__main__":
 
-    start_simulation("config1", r"C:\Users\Konstantin\Desktop\test.csv", Time_simulation=0.01)
-    draw_plot(r"C:\Users\Konstantin\Desktop\test.csv")
+    if '--help' in sys.argv or '-h' in sys.argv:
+        show_help()
+    else:
+        start_simulation("config1", r"C:\Users\Konstantin\Desktop\test.csv", Time_simulation=0.01)
+        draw_plot(r"C:\Users\Konstantin\Desktop\test.csv")
