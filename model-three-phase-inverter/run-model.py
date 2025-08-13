@@ -2,38 +2,41 @@ import matlab.engine
 import pandas as pd
 import matplotlib.pyplot as plt
 
-eng = matlab.engine.start_matlab()  
-eng.three_phase_inverter(
-    "config2",
-    r"C:\Users\Konstantin\Desktop\test.csv",
-    "Time_simulation",
-    0.1, 
-    nargout=0
-)
+def start_simulation(config, csv_file, **kwargs):
+    eng = matlab.engine.start_matlab()   
 
-eng.quit()
+    args = [config, csv_file]
 
-# Чтение данных из CSV файла
-data = pd.read_csv(r"C:\Users\Konstantin\Desktop\test.csv")
+    for key, value in kwargs.items():
+        args.extend([key, value])
 
-# Создание фигуры
-plt.figure(figsize=(12, 6))
+    eng.three_phase_inverter(*args, nargout=0)
 
-# Построение графиков для каждого сигнала
-plt.plot(data['Time'], data['sin1'], linewidth=2)
-plt.plot(data['Time'], data['sin2'], linewidth=2)
-plt.plot(data['Time'], data['sin3'], linewidth=2)
+    eng.quit()
 
-# Настройка графика
-plt.title('График токов на нагрузке', fontsize=14)
-plt.xlabel('Время', fontsize=12)
-plt.grid(True, linestyle='--', alpha=0.7)
-plt.legend(fontsize=10)
+def draw_plot(csv_file):
 
-# Автоматическое масштабирование осей
-plt.autoscale(enable=True, axis='both', tight=True)
+    data = pd.read_csv(csv_file)
 
-# Показать график
-plt.tight_layout()
-plt.show()
+    fig, (ax1, ax2) = plt.subplots(nrows=2, ncols=1, figsize = (12, 10))
 
+    ax1.plot(data['Time']/100, data['current1'], linewidth=2)
+    ax1.plot(data['Time']/100, data['current2'], linewidth=2)
+    ax1.plot(data['Time']/100, data['current3'], linewidth=2)
+    ax1.set_title('График токов на нагрузке', fontsize=14)
+    ax1.grid(True, linestyle='--', alpha=0.7)
+    
+    ax2.plot(data['Time']/100, data['voltage1'], linewidth=1)
+    ax2.plot(data['Time']/100, data['voltage2'], linewidth=1)
+    ax2.plot(data['Time']/100, data['voltage3'], linewidth=1)
+    ax2.set_title('График напряжения на нагрузке', fontsize=14)
+    ax2.grid(True, linestyle='--', alpha=0.7)
+
+    plt.xlabel('Время', fontsize=12)
+    plt.tight_layout()
+    plt.show()
+
+if __name__ == "__main__":
+
+    start_simulation("config1", r"C:\Users\Konstantin\Desktop\test.csv", Time_simulation=0.01)
+    draw_plot(r"C:\Users\Konstantin\Desktop\test.csv")

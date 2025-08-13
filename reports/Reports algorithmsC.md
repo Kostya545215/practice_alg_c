@@ -9,7 +9,7 @@
 - При работе с UART необходимо выбрать канал и порт ( HARDWARE -> HARDWARE Setings -> Hardware implementation -> Hardware Board -> Hardware board setings -> target hardware resources -> connectivity)
 - При работе с ШИМ необходимо выставить continous time ( HARDWARE -> HARDWARE Setings -> Code Generation -> Interface  -> software enviromment)
 
-### Ошибка visibility(static) 
+### Ошибка visibility(static)   
 
 Если галочки у visibility(static) в СubeMX project Manager -> Advanced Settings -> Generated Funcion Calls не кликабельны, то нужно пересоздать проект, и при создании проекта отжать все галочки. 
 

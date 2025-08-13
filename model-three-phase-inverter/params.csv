@@ -1,2 +1,2 @@
 Name ;Threshold_voltage;off_state_conductance;drain_source_on_resistance ;Diode_forward_voltage
-config1;5.9;0,000001;0.8;1.7
+config1;5.9;0.000001;0.8;1.7
