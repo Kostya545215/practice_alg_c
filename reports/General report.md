@@ -46,7 +46,28 @@ void generation_sin(int a, int b, int* c, int* d)
 На графиках ниже продемонстрированы графики напряжения и тока на нагрузке и изначальной синусоиды с треугольной волны при 8 Гц и 8 кГц соответственно. Из графиков видно, что разница в процессах только лишь во времени выполнения.
 
 ![screen](https://github.com/Kostya545215/practice_alg_c/blob/main/images/full%208HZ.jpg)
-<p align="center">Изначальная синусоида и ШИМ сигнал на 8 гЦ</p>
+<p align="center">Изначальная синусоида и ШИМ сигнал на 8 Гц</p>
+
+![screen](https://github.com/Kostya545215/practice_alg_c/blob/main/images/full%208kHZ.jpg)
+<p align="center">Изначальная синусоида и ШИМ сигнал на 8 кГц</p>
+
+![screen](https://github.com/Kostya545215/practice_alg_c/blob/main/images/zoom%208Hz.jpg)
+<p align="center">Приближенные изначальная синусоида и ШИМ сигнал на 8 Гц</p>
+
+![screen](https://github.com/Kostya545215/practice_alg_c/blob/main/images/zoom%208kHZ.jpg)
+<p align="center">Приближенные изначальная синусоида и ШИМ сигнал на 8 Гц</p>
+
+![screen](https://github.com/Kostya545215/practice_alg_c/blob/main/images/current-8Hz.jpg)
+<p align="center">Ток на нагрузке на 8 Гц</p>
+
+![screen](https://github.com/Kostya545215/practice_alg_c/blob/main/images/current-8kHz.jpg)
+<p align="center">Ток на нагрузке на 8 кГц</p>
+
+![screen](https://github.com/Kostya545215/practice_alg_c/blob/main/images/voltage-8Hz.jpg)
+<p align="center">Напряжение на нагрузке на 8 Гц</p>
+
+![screen](https://github.com/Kostya545215/practice_alg_c/blob/main/images/voltage-8kHz.jpg)
+<p align="center">Напряжение на нагрузке на 8 кГц</p>
 
 ### Eth-udp
 
