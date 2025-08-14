@@ -55,7 +55,7 @@ void generation_sin(int a, int b, int* c, int* d)
 <p align="center">Приближенные изначальная синусоида и ШИМ сигнал на 8 Гц</p>
 
 ![screen](https://github.com/Kostya545215/practice_alg_c/blob/main/images/zoom%208kHZ.jpg)
-<p align="center">Приближенные изначальная синусоида и ШИМ сигнал на 8 Гц</p>
+<p align="center">Приближенные изначальная синусоида и ШИМ сигнал на 8 кГц</p>
 
 ![screen](https://github.com/Kostya545215/practice_alg_c/blob/main/images/current-8Hz.jpg)
 <p align="center">Ток на нагрузке на 8 Гц</p>
