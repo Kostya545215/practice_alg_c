@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import configparser
 import sys
+import argparse
 
 HELP_TEXT = """
 [general]
@@ -51,15 +52,15 @@ def draw_plot(csv_file):
 
     fig, (ax1, ax2) = plt.subplots(nrows=2, ncols=1, figsize = (12, 10))
 
-    ax1.plot(data['Time']/100, data['current1'], linewidth=2)
-    ax1.plot(data['Time']/100, data['current2'], linewidth=2)
-    ax1.plot(data['Time']/100, data['current3'], linewidth=2)
+    ax1.plot(data['Time']/1000, data['current1'], linewidth=2)
+    ax1.plot(data['Time']/1000, data['current2'], linewidth=2)
+    ax1.plot(data['Time']/1000, data['current3'], linewidth=2)
     ax1.set_title('График токов на нагрузке', fontsize=14)
     ax1.grid(True, linestyle='--', alpha=0.7)
     
-    ax2.plot(data['Time']/100, data['voltage1'], linewidth=1)
-    ax2.plot(data['Time']/100, data['voltage2'], linewidth=1)
-    ax2.plot(data['Time']/100, data['voltage3'], linewidth=1)
+    ax2.plot(data['Time']/1000, data['voltage1'], linewidth=1)
+    ax2.plot(data['Time']/1000, data['voltage2'], linewidth=1)
+    ax2.plot(data['Time']/1000, data['voltage3'], linewidth=1)
     ax2.set_title('График напряжения на нагрузке', fontsize=14)
     ax2.grid(True, linestyle='--', alpha=0.7)
 
@@ -67,10 +68,43 @@ def draw_plot(csv_file):
     plt.tight_layout()
     plt.show()
 
+
+def parse_arguments():
+    parser = argparse.ArgumentParser(description='Программа для моделирования трехфазного инвертора')
+    
+    # Основные аргументы
+    parser.add_argument('-c', '--config', required=True, help = 'Выбор параметров ключей инвертора')
+    parser.add_argument('-o', '--csv', required=True,
+                        help='Путь к CSV файлу для сохранения результатов (обязательный)')
+    
+    # Параметры симуляции
+    parser.add_argument('-t', '--time', type=float, default=0.01,
+                        help='Время симуляции в секундах (по умолчанию: 0.01)')
+    parser.add_argument('-r', '--resistance', type=float, default=50,
+                        help='Сопротивление нагрузки в омах (по умолчанию: 50)')
+    parser.add_argument('-C', '--capacitance', type=float, default=0.01,
+                        help='Ёмкость нагрузки в фарадах (по умолчанию: 0.01)')
+    parser.add_argument('-L', '--inductance', type=float, default=0.0001,
+                        help='Индуктивность нагрузки в генри (по умолчанию: 0.0001)')
+    parser.add_argument('-v', '--voltage', type=float, default=50,
+                        help='Напряжение источника в вольтах (по умолчанию: 50)')
+    
+    return parser.parse_args()
+
 if __name__ == "__main__":
 
     if '--help' in sys.argv or '-h' in sys.argv:
         show_help()
     else:
-        start_simulation("config1", r"C:\Users\Konstantin\Desktop\test.csv", Time_simulation=0.01)
-        draw_plot(r"C:\Users\Konstantin\Desktop\test.csv")
+        args = parse_arguments()
+
+        sim_params = {
+        'Time_simulation': args.time,
+        'R_load': args.resistance,
+        'C_load': args.capacitance,
+        'L_load': args.inductance,
+        'voltage': args.voltage
+        }
+    
+        start_simulation(args.config, args.csv, **sim_params)
+        draw_plot(args.csv)
